@@ -1,0 +1,47 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-2019'
+
+variables:
+  BuildConfiguration: 'Release'
+
+steps:
+- checkout: self
+  persistCredentials: true
+# not using tasks,just scripting it. easier to work with working directory
+#- task: CMake@1
+#  inputs:
+#    cmakeArgs: ..
+#- task: CMake@1
+#  inputs:
+#    cmakeArgs: '--build . --target FreeType --config release'
+#- task: CMake@1
+#  inputs:
+#    cmakeArgs: '--build . --target FreeType --config debug'
+- script: |
+    @echo on
+    echo "Building"
+  displayName: 'Build Core Clr'
+
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.SourcesDirectory)/Include'
+#     ArtifactName: 'FreeType_Includes'
+#     publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/Release'
+#     ArtifactName: 'FreeType_Release'
+#     publishLocation: 'Container'
+# - task: PublishBuildArtifacts@1
+#   inputs:
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/Debug'
+#     ArtifactName: 'FreeType_Debug'
+#     publishLocation: 'Container'
