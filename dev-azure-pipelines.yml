@@ -28,6 +28,7 @@ steps:
 - script: |
     @echo on
     echo "Building"
+    .\build 
   displayName: 'Build Core Clr'
 
 # - task: PublishBuildArtifacts@1
