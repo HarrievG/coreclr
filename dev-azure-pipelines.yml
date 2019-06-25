@@ -29,13 +29,17 @@ steps:
     @echo on
     echo "Building"
     .\build -x64 -release -skipcrossarchnative -skiprestoreoptdata -skipmanagedtools -skiptests
+    echo $(Build.SourcesDirectory)
+    echo $(Build.SourcesDirectory)/bin/Product/Windows_NT.x64.Release
+    cd $(Build.SourcesDirectory)/bin/Product/Windows_NT.x64.Release
+    dir
   displayName: 'Build Core Clr'
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     PathtoPublish: '$(Build.SourcesDirectory)/Include'
-#     ArtifactName: 'FreeType_Includes'
-#     publishLocation: 'Container'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)/bin/Product/Windows_NT.x64.Release'
+    ArtifactName: 'CoreClr_release'
+    publishLocation: 'Container'
 # - task: PublishBuildArtifacts@1
 #   inputs:
 #     PathtoPublish: '$(Build.ArtifactStagingDirectory)/Release'
