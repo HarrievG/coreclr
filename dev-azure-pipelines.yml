@@ -27,9 +27,9 @@ steps:
 #    cmakeArgs: '--build . --target FreeType --config debug'
 - script: |
     @echo on
+    echo $(Build.SourcesDirectory)
     echo "Building"
     .\build -x64 -release -skipcrossarchnative -skiprestoreoptdata -skipmanagedtools -skiptests
-    echo $(Build.SourcesDirectory)
     echo $(Build.SourcesDirectory)/bin/Product/Windows_NT.x64.Release
     cd $(Build.SourcesDirectory)/bin/Product/Windows_NT.x64.Release
     dir
