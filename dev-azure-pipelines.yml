@@ -28,7 +28,7 @@ steps:
 - script: |
     @echo on
     echo "Building"
-    .\build 
+    .\build -x64 -release -skipcrossarchnative -skiprestoreoptdata -skipmanagedtools -skiptests
   displayName: 'Build Core Clr'
 
 # - task: PublishBuildArtifacts@1
